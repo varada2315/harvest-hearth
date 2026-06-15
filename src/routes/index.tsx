@@ -203,7 +203,7 @@ function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to top, rgba(44,26,14,0.94) 0%, rgba(44,26,14,0.45) 55%, rgba(44,26,14,0.15) 100%)",
+            "linear-gradient(to top, rgba(20,11,4,0.98) 0%, rgba(20,11,4,0.85) 35%, rgba(44,26,14,0.55) 70%, rgba(44,26,14,0.25) 100%)",
         }}
       />
       <div className="relative z-10 w-full px-6 pb-16 pt-32 md:px-20 md:pb-24">
@@ -221,8 +221,10 @@ function Hero() {
             fontSize: "clamp(48px, 9vw, 96px)",
             lineHeight: 0.95,
             letterSpacing: "-0.01em",
+            textShadow: "0 2px 24px rgba(0,0,0,0.55)",
           }}
         >
+
           {lines.map((line, i) => (
             <span key={i} className="reveal block" data-delay={i * 150}>
               {line}
