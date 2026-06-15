@@ -522,8 +522,8 @@ function USP() {
           </div>
           <WheatIcon
             className="absolute -bottom-6 right-0 h-40 w-40"
-            // @ts-expect-error inline style fill
             style={{ color: "rgba(212,133,10,0.25)" }}
+
           />
         </div>
         <div>
