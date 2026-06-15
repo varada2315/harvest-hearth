@@ -203,7 +203,7 @@ function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to top, rgba(44,26,14,0.94) 0%, rgba(44,26,14,0.45) 55%, rgba(44,26,14,0.15) 100%)",
+            "linear-gradient(to top, rgba(20,11,4,0.98) 0%, rgba(20,11,4,0.85) 35%, rgba(44,26,14,0.55) 70%, rgba(44,26,14,0.25) 100%)",
         }}
       />
       <div className="relative z-10 w-full px-6 pb-16 pt-32 md:px-20 md:pb-24">
@@ -221,8 +221,10 @@ function Hero() {
             fontSize: "clamp(48px, 9vw, 96px)",
             lineHeight: 0.95,
             letterSpacing: "-0.01em",
+            textShadow: "0 2px 24px rgba(0,0,0,0.55)",
           }}
         >
+
           {lines.map((line, i) => (
             <span key={i} className="reveal block" data-delay={i * 150}>
               {line}
@@ -310,38 +312,41 @@ function Ticker() {
 
 type Product = { name: string; origin: string; img: string };
 
+const U = (id: string) => `https://images.unsplash.com/${id}?w=600&q=80&auto=format&fit=crop`;
+
 const CRATES: { label: string; items: Product[] }[] = [
   {
     label: "Fresh & Raw",
     items: [
-      { name: "Onion", origin: "Maharashtra, India", img: "onion" },
-      { name: "Ginger", origin: "Karnataka, India", img: "ginger,root" },
-      { name: "G4 Green Chilli", origin: "Andhra Pradesh, India", img: "green-chilli" },
-      { name: "Moringa Drumstick", origin: "Tamil Nadu, India", img: "moringa,drumstick" },
-      { name: "Elephant Yam", origin: "Kerala, India", img: "yam,vegetable" },
-      { name: "Fresh Coconut", origin: "Kerala, India", img: "coconut" },
-      { name: "Pulses", origin: "Madhya Pradesh, India", img: "lentils,pulses" },
-      { name: "Indian Spices", origin: "Kerala, India", img: "indian-spices" },
+      { name: "Onion", origin: "Maharashtra, India", img: U("photo-1620574387735-3624d75b2dbc") },
+      { name: "Ginger", origin: "Karnataka, India", img: U("photo-1599909533713-9cf53d4f6ca8") },
+      { name: "G4 Green Chilli", origin: "Andhra Pradesh, India", img: U("photo-1583119912267-cc97c911e416") },
+      { name: "Moringa Drumstick", origin: "Tamil Nadu, India", img: U("photo-1610348725531-843dff563e2c") },
+      { name: "Elephant Yam", origin: "Kerala, India", img: U("photo-1518977676601-b53f82aba655") },
+      { name: "Fresh Coconut", origin: "Kerala, India", img: U("photo-1581375074612-d1fd0e661aeb") },
+      { name: "Pulses", origin: "Madhya Pradesh, India", img: U("photo-1612257999756-ac3e9b079751") },
+      { name: "Indian Spices", origin: "Kerala, India", img: U("photo-1532336414038-cf19250c5757") },
     ],
   },
   {
     label: "Dehydrated",
     items: [
-      { name: "Onion Flakes", origin: "Maharashtra, India", img: "dried-onion" },
-      { name: "Ginger Flakes", origin: "Karnataka, India", img: "dried-ginger" },
-      { name: "Garlic Flakes", origin: "Madhya Pradesh, India", img: "dried-garlic" },
+      { name: "Onion Flakes", origin: "Maharashtra, India", img: U("photo-1599930113854-d6d7fd521f10") },
+      { name: "Ginger Flakes", origin: "Karnataka, India", img: U("photo-1573414405666-1d62a9f74203") },
+      { name: "Garlic Flakes", origin: "Madhya Pradesh, India", img: U("photo-1615485925873-1aae362dd910") },
     ],
   },
   {
     label: "Powdered",
     items: [
-      { name: "Onion Powder", origin: "Maharashtra, India", img: "onion-powder,spice" },
-      { name: "Garlic Powder", origin: "Madhya Pradesh, India", img: "garlic-powder" },
-      { name: "Moringa Powder", origin: "Tamil Nadu, India", img: "moringa-powder,green" },
-      { name: "Vegetable Powder", origin: "Maharashtra, India", img: "vegetable-powder" },
+      { name: "Onion Powder", origin: "Maharashtra, India", img: U("photo-1596040033229-a9821ebd058d") },
+      { name: "Garlic Powder", origin: "Madhya Pradesh, India", img: U("photo-1599909533404-7a8a5a3a8bb1") },
+      { name: "Moringa Powder", origin: "Tamil Nadu, India", img: U("photo-1556909114-44e3e9399a2e") },
+      { name: "Vegetable Powder", origin: "Maharashtra, India", img: U("photo-1542838132-92c53300491e") },
     ],
   },
 ];
+
 
 function CrateRow({ label, items }: { label: string; items: Product[] }) {
   const scroller = useRef<HTMLDivElement>(null);
@@ -384,7 +389,7 @@ function CrateRow({ label, items }: { label: string; items: Product[] }) {
             >
               <div className="h-[160px] w-full overflow-hidden">
                 <img
-                  src={`https://source.unsplash.com/240x160/?${p.img},food`}
+                  src={p.img}
                   alt={p.name}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
