@@ -32,9 +32,9 @@ function useReveal() {
   }, []);
 }
 
-function WheatIcon({ className = "" }: { className?: string }) {
+function WheatIcon({ className = "", style }: { className?: string; style?: React.CSSProperties }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+    <svg className={className} style={style} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
       <path d="M12 22V6" />
       <path d="M12 10c-2-2-5-2-6-1 1 2 4 3 6 3" />
       <path d="M12 10c2-2 5-2 6-1-1 2-4 3-6 3" />
@@ -46,6 +46,7 @@ function WheatIcon({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+
 
 function TornDivider({ flip = false, from = "var(--parchment)", to = "var(--cream)" }: { flip?: boolean; from?: string; to?: string }) {
   // Hand-irregular path
