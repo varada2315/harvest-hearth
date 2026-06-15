@@ -389,7 +389,7 @@ function CrateRow({ label, items }: { label: string; items: Product[] }) {
             >
               <div className="h-[160px] w-full overflow-hidden">
                 <img
-                  src={`https://source.unsplash.com/240x160/?${p.img},food`}
+                  src={p.img}
                   alt={p.name}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
