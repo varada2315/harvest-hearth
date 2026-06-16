@@ -116,15 +116,15 @@ function Nav() {
         </nav>
         <a
           href="#contact"
-          className="hidden rounded-[2px] border-[1.5px] px-5 py-2 text-[12px] uppercase tracking-[0.16em] transition-colors md:inline-block"
-          style={{ borderColor: "var(--saffron)", color: "var(--saffron)" }}
+          className="hidden rounded-[2px] border-[1.5px] px-5 py-2 text-[12px] uppercase tracking-[0.16em] transition-colors md:inline-flex items-center justify-center"
+          style={{ borderColor: "var(--saffron)", color: "var(--soil)", background: "var(--saffron)" }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.background = "var(--saffron)";
-            (e.currentTarget as HTMLElement).style.color = "var(--soil)";
-          }}
-          onMouseLeave={(e) => {
             (e.currentTarget as HTMLElement).style.background = "transparent";
             (e.currentTarget as HTMLElement).style.color = "var(--saffron)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLElement).style.background = "var(--saffron)";
+            (e.currentTarget as HTMLElement).style.color = "var(--soil)";
           }}
         >
           Enquire Now
@@ -174,8 +174,16 @@ function Nav() {
           <a
             href="#contact"
             onClick={() => setOpen(false)}
-            className="mt-4 rounded-[2px] border-[1.5px] px-6 py-2 text-[12px] uppercase tracking-[0.18em]"
-            style={{ borderColor: "var(--saffron)", color: "var(--saffron)" }}
+            className="mt-4 rounded-[2px] border-[1.5px] px-6 py-2 text-[12px] uppercase tracking-[0.18em] transition-colors inline-flex items-center justify-center"
+            style={{ borderColor: "var(--saffron)", color: "var(--soil)", background: "var(--saffron)" }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "transparent";
+              (e.currentTarget as HTMLElement).style.color = "var(--saffron)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "var(--saffron)";
+              (e.currentTarget as HTMLElement).style.color = "var(--soil)";
+            }}
           >
             Enquire Now
           </a>
@@ -192,21 +200,21 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen w-full items-end overflow-hidden"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden"
     >
       <img
-        src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1800&q=80"
-        alt="Indian farm harvest at sunrise"
+        src="/images/fields_and_markets.png"
+        alt="Lush agricultural fields transitioning into a bustling global shipping port, representing fields and foreign markets"
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to top, rgba(20,11,4,0.98) 0%, rgba(20,11,4,0.85) 35%, rgba(44,26,14,0.55) 70%, rgba(44,26,14,0.25) 100%)",
+            "linear-gradient(to bottom, rgba(20,11,4,0.75) 0%, rgba(20,11,4,0.45) 45%, rgba(20,11,4,0.85) 100%)",
         }}
       />
-      <div className="relative z-10 w-full px-6 pb-16 pt-32 md:px-20 md:pb-24">
+      <div className="relative z-10 w-full max-w-[800px] px-6 py-32 flex flex-col items-center justify-center text-center">
         <span
           className="reveal-soft inline-block rounded-[2px] border px-3 py-1 text-[11px] uppercase tracking-[0.22em]"
           style={{ borderColor: "var(--saffron)", color: "var(--saffron)" }}
@@ -214,14 +222,12 @@ function Hero() {
           Est. India · Global Exporter
         </span>
         <h1
-          className="mt-6 font-serif italic"
+          className="mt-10 font-display font-bold uppercase text-center tracking-wide"
           style={{
             color: "#FDF8EE",
-            fontWeight: 700,
-            fontSize: "clamp(48px, 9vw, 96px)",
-            lineHeight: 0.95,
-            letterSpacing: "-0.01em",
-            textShadow: "0 2px 24px rgba(0,0,0,0.55)",
+            fontSize: "clamp(36px, 7vw, 76px)",
+            lineHeight: 1.25,
+            textShadow: "0 4px 30px rgba(0,0,0,0.65)",
           }}
         >
 
@@ -231,15 +237,15 @@ function Hero() {
             </span>
           ))}
         </h1>
-        <div className="my-6 h-px w-[120px]" style={{ background: "var(--bark)" }} />
+        <div className="mt-10 mb-8 h-px w-[120px] mx-auto" style={{ background: "var(--bark)" }} />
         <p
-          className="max-w-[460px] text-base font-light leading-relaxed"
-          style={{ color: "rgba(253,248,238,0.78)" }}
+          className="max-w-[540px] text-base font-light leading-relaxed mx-auto"
+          style={{ color: "rgba(253,248,238,0.85)" }}
         >
           Connecting India&apos;s finest agri harvests to global markets — with integrity,
           traceability, and care.
         </p>
-        <div className="mt-8 flex flex-wrap items-center gap-6">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
           <a
             href="#contact"
             className="rounded-[2px] px-8 py-3.5 text-[13px] font-medium uppercase tracking-[0.14em] transition-colors"
@@ -319,12 +325,12 @@ const CRATES: { label: string; items: Product[] }[] = [
     label: "Fresh & Raw",
     items: [
       { name: "Onion", origin: "Maharashtra, India", img: U("photo-1620574387735-3624d75b2dbc") },
-      { name: "Ginger", origin: "Karnataka, India", img: U("photo-1599909533713-9cf53d4f6ca8") },
+      { name: "Ginger", origin: "Karnataka, India", img: "/images/ginger.png" },
       { name: "G4 Green Chilli", origin: "Andhra Pradesh, India", img: U("photo-1583119912267-cc97c911e416") },
       { name: "Moringa Drumstick", origin: "Tamil Nadu, India", img: U("photo-1610348725531-843dff563e2c") },
       { name: "Elephant Yam", origin: "Kerala, India", img: U("photo-1518977676601-b53f82aba655") },
       { name: "Fresh Coconut", origin: "Kerala, India", img: U("photo-1581375074612-d1fd0e661aeb") },
-      { name: "Pulses", origin: "Madhya Pradesh, India", img: U("photo-1612257999756-ac3e9b079751") },
+      { name: "Pulses", origin: "Madhya Pradesh, India", img: "/images/pulses.png" },
       { name: "Indian Spices", origin: "Kerala, India", img: U("photo-1532336414038-cf19250c5757") },
     ],
   },
@@ -332,16 +338,16 @@ const CRATES: { label: string; items: Product[] }[] = [
     label: "Dehydrated",
     items: [
       { name: "Onion Flakes", origin: "Maharashtra, India", img: U("photo-1599930113854-d6d7fd521f10") },
-      { name: "Ginger Flakes", origin: "Karnataka, India", img: U("photo-1573414405666-1d62a9f74203") },
-      { name: "Garlic Flakes", origin: "Madhya Pradesh, India", img: U("photo-1615485925873-1aae362dd910") },
+      { name: "Ginger Flakes", origin: "Karnataka, India", img: "/images/ginger_flakes.png" },
+      { name: "Garlic Flakes", origin: "Madhya Pradesh, India", img: "/images/garlic_flakes.png" },
     ],
   },
   {
     label: "Powdered",
     items: [
       { name: "Onion Powder", origin: "Maharashtra, India", img: U("photo-1596040033229-a9821ebd058d") },
-      { name: "Garlic Powder", origin: "Madhya Pradesh, India", img: U("photo-1599909533404-7a8a5a3a8bb1") },
-      { name: "Moringa Powder", origin: "Tamil Nadu, India", img: U("photo-1556909114-44e3e9399a2e") },
+      { name: "Garlic Powder", origin: "Madhya Pradesh, India", img: "/images/garlic_powder.png" },
+      { name: "Moringa Powder", origin: "Tamil Nadu, India", img: "/images/moringa_powder.png" },
       { name: "Vegetable Powder", origin: "Maharashtra, India", img: U("photo-1542838132-92c53300491e") },
     ],
   },
