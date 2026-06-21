@@ -12,4 +12,16 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    server: {
+      port: 8014,
+      host: true,
+      allowedHosts: ["het.cyberpunk.co.in"],
+    },
+    preview: {
+      port: 8014,
+      host: true,
+      allowedHosts: ["het.cyberpunk.co.in"],
+    },
+  },
 });

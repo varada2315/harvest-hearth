@@ -111,6 +111,38 @@
   animation: scroll-bounce 1.6s ease-in-out infinite;
 }
 
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+@media (max-width: 768px) {
+  .writing-mode-vertical {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+}
+
+.hero-glass-card {
+  background: rgba(30, 15, 6, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 133, 10, 0.15);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.float-badge {
+  animation: float-slow 6s ease-in-out infinite alternate;
+}
+
+@keyframes float-slow {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;

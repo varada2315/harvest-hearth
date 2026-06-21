@@ -85,6 +85,16 @@ function Nav() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
   return (
     <header
       className="fixed inset-x-0 top-0 z-50 transition-all duration-500"
@@ -200,7 +210,7 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-20 md:py-28"
     >
       <img
         src="/images/fields_and_markets.png"
@@ -211,64 +221,97 @@ function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(20,11,4,0.75) 0%, rgba(20,11,4,0.45) 45%, rgba(20,11,4,0.85) 100%)",
+            "linear-gradient(to bottom, rgba(20,11,4,0.8) 0%, rgba(20,11,4,0.5) 45%, rgba(20,11,4,0.9) 100%)",
         }}
       />
-      <div className="relative z-10 w-full max-w-[800px] px-6 py-32 flex flex-col items-center justify-center text-center">
-        <span
-          className="reveal-soft inline-block rounded-[2px] border px-3 py-1 text-[11px] uppercase tracking-[0.22em]"
-          style={{ borderColor: "var(--saffron)", color: "var(--saffron)" }}
-        >
-          Est. India · Global Exporter
-        </span>
-        <h1
-          className="mt-10 font-display font-bold uppercase text-center tracking-wide"
-          style={{
-            color: "#FDF8EE",
-            fontSize: "clamp(36px, 7vw, 76px)",
-            lineHeight: 1.25,
-            textShadow: "0 4px 30px rgba(0,0,0,0.65)",
-          }}
-        >
 
-          {lines.map((line, i) => (
-            <span key={i} className="reveal block" data-delay={i * 150}>
-              {line}
-            </span>
-          ))}
-        </h1>
-        <div className="mt-10 mb-8 h-px w-[120px] mx-auto" style={{ background: "var(--bark)" }} />
-        <p
-          className="max-w-[540px] text-base font-light leading-relaxed mx-auto"
-          style={{ color: "rgba(253,248,238,0.85)" }}
-        >
-          Connecting India&apos;s finest agri harvests to global markets — with integrity,
-          traceability, and care.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
-          <a
-            href="#contact"
-            className="rounded-[2px] px-8 py-3.5 text-[13px] font-medium uppercase tracking-[0.14em] transition-colors"
-            style={{ background: "var(--saffron)", color: "var(--soil)" }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = "var(--ochre)")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = "var(--saffron)")}
+      {/* Floating Badges for Desktop */}
+      <div className="absolute left-[6%] top-[28%] z-20 hidden xl:flex float-badge flex-col gap-2 rounded-[4px] border border-[rgba(212,133,10,0.25)] bg-[rgba(44,26,14,0.85)] p-4 text-left backdrop-blur-md">
+        <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--saffron)] font-semibold">Origin Sourced</span>
+        <span className="font-serif text-[17px] italic text-[var(--linen)]">Direct Indian Fields</span>
+      </div>
+      <div className="absolute right-[6%] top-[38%] z-20 hidden xl:flex float-badge flex-col gap-2 rounded-[4px] border border-[rgba(212,133,10,0.25)] bg-[rgba(44,26,14,0.85)] p-4 text-left backdrop-blur-md" style={{ animationDelay: "1.5s" }}>
+        <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--saffron)] font-semibold">Logistics Ready</span>
+        <span className="font-serif text-[17px] italic text-[var(--linen)]">Seamless Export Chain</span>
+      </div>
+
+      {/* Main Glass Card Content */}
+      <div className="relative z-10 w-full max-w-[840px] px-2 flex flex-col items-center justify-center text-center my-auto">
+        <div className="hero-glass-card w-full px-6 py-10 md:px-12 md:py-16 rounded-[12px] flex flex-col items-center">
+          <span
+            className="reveal-soft inline-block rounded-[2px] border px-3 py-1 text-[11px] uppercase tracking-[0.22em]"
+            style={{ borderColor: "var(--saffron)", color: "var(--saffron)" }}
           >
-            Start Enquiry
-          </a>
-          <a
-            href="#products"
-            className="text-[13px] uppercase tracking-[0.16em] underline-offset-8 hover:underline"
-            style={{ color: "var(--linen)" }}
+            Est. India · Global Exporter
+          </span>
+          <h1
+            className="mt-8 font-display font-bold uppercase text-center tracking-wide"
+            style={{
+              color: "#FDF8EE",
+              fontSize: "clamp(34px, 6.5vw, 68px)",
+              lineHeight: 1.25,
+              textShadow: "0 4px 30px rgba(0,0,0,0.65)",
+            }}
           >
-            View Products ↓
-          </a>
+            {lines.map((line, i) => (
+              <span key={i} className="reveal block" data-delay={i * 150}>
+                {line}
+              </span>
+            ))}
+          </h1>
+          <div className="mt-8 mb-6 h-px w-[120px] mx-auto" style={{ background: "var(--saffron)", opacity: 0.5 }} />
+          <p
+            className="max-w-[540px] text-base font-light leading-relaxed mx-auto text-center"
+            style={{ color: "rgba(253,248,238,0.9)" }}
+          >
+            Connecting India&apos;s finest agri harvests to global markets — with integrity,
+            traceability, and care.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
+            <a
+              href="#contact"
+              className="rounded-[2px] px-8 py-3.5 text-[13px] font-medium uppercase tracking-[0.14em] transition-colors"
+              style={{ background: "var(--saffron)", color: "var(--soil)" }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = "var(--ochre)")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = "var(--saffron)")}
+            >
+              Start Enquiry
+            </a>
+            <a
+              href="#products"
+              className="text-[13px] uppercase tracking-[0.16em] underline-offset-8 hover:underline"
+              style={{ color: "var(--linen)" }}
+            >
+              View Products ↓
+            </a>
+          </div>
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
-        <span className="scroll-line block h-10 w-px" style={{ background: "var(--saffron)" }} />
+      {/* Trust Stats Strip */}
+      <div className="relative z-20 w-full max-w-[1200px] px-2 mt-8 md:mt-12 pb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 bg-[rgba(30,15,6,0.65)] backdrop-blur-md border border-[rgba(212,133,10,0.15)] p-5 md:p-6 rounded-[8px]">
+          {[
+            { title: "Direct Sourcing", desc: "No middlemen, direct from farms", icon: "🌱" },
+            { title: "Quality Certified", desc: "FSSAI & APEDA compliant", icon: "🏆" },
+            { title: "Global Shipping", desc: "Cold-chain & bulk logistics", icon: "🚢" },
+            { title: "100% Traceability", desc: "Complete supply chain visibility", icon: "🔍" }
+          ].map((item, idx) => (
+            <div key={idx} className="flex items-start gap-4 text-left p-2 hover:bg-[rgba(212,133,10,0.05)] rounded-[4px] transition-colors duration-300">
+              <span className="text-3xl filter drop-shadow-[0_2px_8px_rgba(212,133,10,0.3)]">{item.icon}</span>
+              <div>
+                <h4 className="font-serif text-[15px] font-semibold text-[var(--saffron)]">{item.title}</h4>
+                <p className="text-[11px] text-[var(--linen)] opacity-80 mt-0.5 leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="absolute bottom-4 left-1/2 z-10 hidden md:flex -translate-x-1/2 flex-col items-center gap-2">
+        <span className="scroll-line block h-8 w-px" style={{ background: "var(--saffron)" }} />
         <span
-          className="text-[10px] uppercase tracking-[0.3em]"
+          className="text-[9px] uppercase tracking-[0.3em]"
           style={{ color: "rgba(212,133,10,0.7)" }}
         >
           Scroll
@@ -360,14 +403,14 @@ function CrateRow({ label, items }: { label: string; items: Product[] }) {
     scroller.current?.scrollBy({ left: dir * 280, behavior: "smooth" });
   };
   return (
-    <div className="reveal relative mt-14 flex items-stretch gap-4">
+    <div className="reveal relative mt-10 md:mt-14 flex flex-col md:flex-row items-stretch gap-4">
       <div
-        className="flex w-12 shrink-0 items-center justify-center border"
+        className="flex w-full md:w-12 shrink-0 items-center justify-center border py-2.5 md:py-0"
         style={{ borderColor: "var(--linen)", background: "var(--parchment)" }}
       >
         <span
-          className="whitespace-nowrap font-serif text-[13px] italic"
-          style={{ color: "var(--bark)", writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+          className="whitespace-nowrap font-serif text-[14px] md:text-[13px] italic writing-mode-vertical"
+          style={{ color: "var(--bark)" }}
         >
           {label}
         </span>
@@ -578,7 +621,7 @@ function Story() {
   return (
     <section id="story" className="px-6 py-28 md:px-16" style={{ background: "var(--parchment)" }}>
       <div className="mx-auto max-w-[900px]">
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4">
           {imgs.map((src, i) => (
             <div
               key={src}
@@ -590,7 +633,7 @@ function Story() {
                 transform: `rotate(${rotations[i]})`,
               }}
             >
-              <img src={src} alt="Indian agriculture" className="h-[220px] w-full object-cover" />
+              <img src={src} alt="Indian agriculture" className="h-[200px] md:h-[220px] w-full object-cover" />
             </div>
           ))}
         </div>
