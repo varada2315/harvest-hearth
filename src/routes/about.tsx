@@ -261,56 +261,6 @@ function Purpose() {
   );
 }
 
-function Founders() {
-  return (
-    <section className="px-6 py-24 md:px-16" style={{ background: "var(--parchment)" }}>
-      <div className="mx-auto max-w-[1000px]">
-        <div className="text-center max-w-[700px] mx-auto mb-16">
-          <span className="text-[11px] uppercase tracking-[0.24em] text-[var(--saffron)]">
-            Our Leadership
-          </span>
-          <h2 className="mt-4 font-serif italic text-3xl md:text-5xl text-[var(--soil)]">
-            Meet Our Founders
-          </h2>
-          <div className="my-6 h-px w-20 mx-auto" style={{ background: "var(--bark)", opacity: 0.3 }} />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="reveal flex justify-center">
-            <div className="relative group max-w-[380px] w-full aspect-[4/5] overflow-hidden rounded-[6px] border border-[var(--linen)] shadow-md">
-              <img
-                src="/images/founder_ceo.png"
-                alt="Founder & CEO"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--soil)] via-transparent to-transparent opacity-60"></div>
-              <div className="absolute bottom-6 left-6 text-[var(--linen)]">
-                <h3 className="font-serif text-2xl font-bold">Harshal Dev</h3>
-                <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--saffron)] mt-1">Founder &amp; CEO</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="reveal space-y-6 text-[var(--soil)]">
-            <span className="text-[12px] uppercase tracking-[0.2em] text-[var(--bark)] font-semibold">Leadership Vision</span>
-            <h3 className="font-serif text-2xl md:text-3xl italic font-semibold leading-tight">
-              “Bridging Nashik&apos;s rich agricultural heritage with global trade opportunities.”
-            </h3>
-            <div className="h-px w-12 bg-[var(--saffron)]" />
-            <p className="text-[15px] font-light leading-[1.8] text-[var(--bark)]">
-              Shree Dev Global was founded on the belief that premium Indian harvests should reach international markets with absolute traceability and uncompromised quality. 
-              By partnering directly with farmers across Maharashtra, we establish a robust supply chain that honors the source while meeting international packaging and phytosanitary standards.
-            </p>
-            <p className="text-[15px] font-light leading-[1.8] text-[var(--bark)]">
-              Our commitment is built on transparent relationships, cold-chain efficiency, and operational excellence. We ensure that from the day crops are harvested in Nashik to the day they arrive at global shipping ports, integrity is preserved every step of the way.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function AboutPage() {
   return (
     <Layout>
@@ -340,8 +290,6 @@ function AboutPage() {
       <TornDivider from="var(--parchment)" to="var(--soil)" />
       <Purpose />
       <TornDivider from="var(--soil)" to="var(--parchment)" />
-      <Founders />
-      <TornDivider from="var(--parchment)" to="var(--soil)" />
       <USP />
     </Layout>
   );

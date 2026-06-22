@@ -55,7 +55,6 @@ export function Navbar() {
     { label: "Home", to: "/" },
     { label: "Products", to: "/products" },
     { label: "About", to: "/about" },
-    { label: "Certificates", to: "/certificates" },
     { label: "Contact", to: "/contact" },
   ];
 

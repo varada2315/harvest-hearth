@@ -13,7 +13,6 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CertificatesRouteImport } from './routes/certificates'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -37,11 +36,6 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CertificatesRoute = CertificatesRouteImport.update({
-  id: '/certificates',
-  path: '/certificates',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -56,7 +50,6 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/certificates': typeof CertificatesRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
@@ -65,7 +58,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/certificates': typeof CertificatesRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
@@ -75,7 +67,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/certificates': typeof CertificatesRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
@@ -83,28 +74,13 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/about'
-    | '/certificates'
-    | '/contact'
-    | '/privacy'
-    | '/products'
-    | '/terms'
+  fullPaths: '/' | '/about' | '/contact' | '/privacy' | '/products' | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/about'
-    | '/certificates'
-    | '/contact'
-    | '/privacy'
-    | '/products'
-    | '/terms'
+  to: '/' | '/about' | '/contact' | '/privacy' | '/products' | '/terms'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/certificates'
     | '/contact'
     | '/privacy'
     | '/products'
@@ -114,7 +90,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  CertificatesRoute: typeof CertificatesRoute
   ContactRoute: typeof ContactRoute
   PrivacyRoute: typeof PrivacyRoute
   ProductsRoute: typeof ProductsRoute
@@ -151,13 +126,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/certificates': {
-      id: '/certificates'
-      path: '/certificates'
-      fullPath: '/certificates'
-      preLoaderRoute: typeof CertificatesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -178,7 +146,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  CertificatesRoute: CertificatesRoute,
   ContactRoute: ContactRoute,
   PrivacyRoute: PrivacyRoute,
   ProductsRoute: ProductsRoute,
